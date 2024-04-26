@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dodawaj i odejmuj</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./app.css" />
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script defer src="./src/app.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="menu util-flex">
+        <div class="operators util-flex">
+          <div class="icon icon-plus icon-active">
+            <ion-icon name="add-outline"></ion-icon>
+          </div>
+          <div class="icon icon-minus">
+            <ion-icon name="remove-outline"></ion-icon>
+          </div>
+        </div>
+        <div class="levels util-flex">
+          <div class="icon icon-easy icon-active">
+            <ion-icon name="baseball-outline"></ion-icon>
+          </div>
+          <div class="icon icon-hard">
+            <ion-icon name="barbell-outline"></ion-icon>
+          </div>
+        </div>
+      </div>
+      <div class="main util-flex">
+        <form class="form">
+          <span class="first-number">8</span>
+          <span class="operator">+</span>
+          <span class="second-number">8</span>
+          <span class="equal-sign">=</span>
+          <br />
+          <input type="number" class="result" />
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
