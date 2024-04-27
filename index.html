@@ -4,12 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dodawaj i odejmuj</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./app.css" />
     <script
       type="module"
@@ -37,6 +34,16 @@
           </div>
         </div>
       </div>
+      <div class="stats">
+        <div class="stats--info util-flex">
+          <h3 class="stats--info-header">Dzisiaj:</h3>
+          <div class="stats--info-info stat-1">0</div>
+        </div>
+        <div class="stats--info util-flex">
+          <h3 class="stats--info-header">Rekord:</h3>
+          <div class="stats--info-info stat-2">0</div>
+        </div>
+      </div>
       <div class="main util-flex">
         <form class="form">
           <div class="wrapper util-flex">
@@ -48,27 +55,7 @@
           <input type="number" class="result" />
         </form>
       </div>
-      <div class="stats">
-
-          <div>&nbsp;</div>
-          <div class="icon">
-            <ion-icon name="baseball-outline"></ion-icon>
-          </div>
-          <div class="icon">
-            <ion-icon name="barbell-outline"></ion-icon>
-          </div>
-          <div class="icon">
-            <ion-icon name="add-outline"></ion-icon>
-          </div>
-           <div class="stat-1">0</div>
-           <div class="stat-2">0</div>
-          <div class="icon">
-            <ion-icon name="remove-outline"></ion-icon>
-          </div>
-           <div class="stat-3">0</div>
-           <div class="stat-4">0</div>
-         
-      </div>
+      
       </div>
     </div>
   </body>

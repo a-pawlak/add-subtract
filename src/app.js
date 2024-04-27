@@ -39,24 +39,18 @@ class App {
   form = document.querySelector('.form');
   stat1El = document.querySelector('.stat-1');
   stat2El = document.querySelector('.stat-2');
-  stat3El = document.querySelector('.stat-3');
-  stat4El = document.querySelector('.stat-4');
   level = 15; // easy
   operator = true; // adding
   num1;
   num2;
   result;
   formActive = true;
-  addHardStats = 0;
-  addEasyStats = 0;
-  subHardStats = 0;
-  subEasyStats = 0;
+  todayStats = 0;
+  recoordStats = 0;
 
   constructor() {
-    this.addHardStats = this.getStats()[2] ?? 0;
-    this.addEasyStats = this.getStats()[1] ?? 0;
-    this.subHardStats = this.getStats()[4] ?? 0;
-    this.subEasyStats = this.getStats()[3] ?? 0;
+    this.todayStats = this.getStats()[1];
+    this.recoordStats = this.getStats()[2];
     this.userInput.focus();
     this.levelsListener();
     this.operatorsListener();
@@ -80,11 +74,10 @@ class App {
   }
 
   updateStats() {
-    if (this.operator) {
-      this.level === 15 ? (this.addEasyStats += 1) : (this.addHardStats += 1);
-      return;
-    }
-    this.level === 15 ? (this.subEasyStats += 1) : (this.subHardStats += 1);
+    this.todayStats += 1;
+    if (this.todayStats > this.recoordStats)
+      this.recoordStats = this.todayStats;
+    console.log(this.todayStats);
   }
 
   appLogicHandler(e) {
@@ -118,6 +111,7 @@ class App {
     this.levels.addEventListener('click', this.levelsManager.bind(this));
   }
   levelsManager(e) {
+    if (e.target.closest('.icon-active')) return;
     this.manageActiveClass(this.iconEasy, this.iconHard, e);
     e.target.closest('.icon-easy') ? (this.level = 15) : (this.level = 50);
     this.renderSample();
@@ -128,6 +122,7 @@ class App {
     this.operators.addEventListener('click', this.operatorsManager.bind(this));
   }
   operatorsManager(e) {
+    if (e.target.closest('.icon-active')) return;
     this.manageActiveClass(this.iconMinus, this.iconPlus, e);
     e.target.closest('.icon-plus')
       ? (this.operator = true)
@@ -152,27 +147,20 @@ class App {
   safeStats() {
     const date = this.getToday();
     const safedObj = JSON.stringify({
-      data: [
-        date,
-        this.addEasyStats,
-        this.addHardStats,
-        this.subEasyStats,
-        this.subHardStats,
-      ],
+      data: [date, this.todayStats, this.recoordStats],
     });
     localStorage.setItem('simplemath', safedObj);
   }
 
   getStats() {
     const data = JSON.parse(localStorage.getItem('simplemath'));
-    if (!data || data.data[0] !== this.getToday()) return 0;
+    if (!data) return [null, 0, 0];
+    if (data.data[0] !== this.getToday()) return ['', 0, data.data[2]];
     else return data.data;
   }
   renderStats() {
-    this.stat1El.textContent = this.addEasyStats;
-    this.stat2El.textContent = this.addHardStats;
-    this.stat3El.textContent = this.subEasyStats;
-    this.stat4El.textContent = this.subHardStats;
+    this.stat1El.textContent = this.todayStats;
+    this.stat2El.textContent = this.recoordStats;
   }
 }
 
